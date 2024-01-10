@@ -51,10 +51,6 @@ button {
   cursor: pointer;
 }
 
-.gallery-item a {
-  text-decoration: none;
-}
-
 .gallery-item:hover img {
   border-color: #007BFF;
 }
