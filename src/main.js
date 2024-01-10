@@ -100,7 +100,7 @@ const handleSearсhFormSubmit = (event) => {
 };
 
 const searchForm = document.getElementById("form");
-searchForm.addEventListener("submit", handleSearсhFormSubmitndleSearchFormSubmit);
+searchForm.addEventListener("submit", handleSearсhFormSubmit);
 
 
 
