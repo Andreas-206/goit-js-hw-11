@@ -85,7 +85,7 @@ const handleSearсhFormSubmit = (event) => {
 
   showLoadingIndicator();
 
-  fetchImg(guery)
+  fetchImg(query)
     .then((images) => {
       hideLoadingIndicator();
       if (images.length > 0) {
