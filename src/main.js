@@ -34,13 +34,13 @@ const fetchImg = (query) => {
 };
 
 const renderGallery = (images) => {
-  const galleryCoontainer = document.getElementById("gallery");
-  galleryCoontainer.innerHTML = "";
+  const galleryContainer = document.getElementById("gallery");
+  galleryContainer.innerHTML = "";
 
   const lightbox = new SimpleLightbox(".gallery-item");
 
   images.forEach(({ image }) => {
-    galleryCoontainer.insertAdjacentHTML('beforeend', `
+    galleryContainer.insertAdjacentHTML('beforeend', `
     <li class="gallery-item">
     <img src="${webformatURL}" data-source="${largeImageURL}" alt="${tags}"/>
     <p>Likes: ${likes}<p/>
