@@ -67,11 +67,11 @@ const showMessage = (message, type = "info") => {
   });
 };
 
-const handleSearchFormSubmit = (event) => {
+const handleSearhFormSubmit = (event) => {
   event.preventDefault();
 
-  const searhInput = document.getElementById("search-input");
-  const query = searhInput.value.trim();
+  const searchInput = document.getElementById("search-input");
+  const query = searchInput.value.trim();
 
   if (query === "") {
     showMessage("Please enter a search query", "warning");

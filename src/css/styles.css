@@ -37,3 +37,24 @@ button {
   gap: 10px;
   margin-top: 20px;
 }
+
+.gallery-item {
+  flex: 1 0 calc(33.333% - 10px);
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gallery-item a {
+  text-decoration: none;
+}
+
+.gallery-item:hover img {
+  border-color: #007BFF;
+}
