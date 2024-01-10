@@ -40,12 +40,13 @@ const renderGallery = (images) => {
   const lightbox = new SimpleLightbox(".gallery-item");
 
   images.forEach(({ image }) => {
-    galleryCoontainer.insertAdjacentHTML(
-      'beforeend', `
-    <li>
-    <a href="${largeImageURL}" class="gallery-item">
-      <img src="${webformatURL}" alt="${tags}">
-    </a>
+    galleryCoontainer.insertAdjacentHTML('beforeend', `
+    <li class="gallery-item">
+    <img src="${webformatURL}" data-source="${largeImageURL}" alt="${tags}"/>
+    <p>Likes: ${likes}<p/>
+    <p>view: ${view}<p/>
+    <p>comments: ${comments}<p/>
+    <p>downloads: ${downloads}<p/>
     </li>
     `
     );
