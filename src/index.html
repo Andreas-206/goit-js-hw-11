@@ -8,9 +8,19 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <section>
-      <h1>Lorem ipsum dolor sit amet.</h1>
-    </section>
+      <h1>Image search app</h1>
+
+      <form id="form">
+        <label for="search-input">Search</label>
+        <input type="text" id="search-input" required>
+        <button type="submit">Search</button>
+      </form>
+
+      <div id="loader" style="display: none;">Loading...</div>
+
+      <div id="gallery"></div>
+
+
 
     <script type="module" src="./main.js"></script>
   </body>
