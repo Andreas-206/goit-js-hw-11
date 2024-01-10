@@ -40,11 +40,15 @@ const renderGallery = (images) => {
   const lightbox = new SimpleLightbox(".gallery-item");
 
   images.forEach(({ image }) => {
-    galleryCoontainer.insertAdjacentHTML("beforeend", `
+    galleryCoontainer.insertAdjacentHTML(
+      'beforeend', `
+    <li>
     <a href="${largeImageURL}" class="gallery-item">
       <img src="${webformatURL}" alt="${tags}">
     </a>
-    `);
+    </li>
+    `
+    );
   });
 
   lightbox.refresh();
@@ -67,7 +71,7 @@ const showMessage = (message, type = "info") => {
   });
 };
 
-const handleSearhFormSubmit = (event) => {
+const handleSearсhFormSubmit = (event) => {
   event.preventDefault();
 
   const searchInput = document.getElementById("search-input");
@@ -95,8 +99,8 @@ const handleSearhFormSubmit = (event) => {
     });
 };
 
-const searchForm = document.getElementById("search-form");
-searchForm.addEventListener("submit", handleSearchFormSubmit);
+const searchForm = document.getElementById("form");
+searchForm.addEventListener("submit", handleSearсhFormSubmitndleSearchFormSubmit);
 
 
 
