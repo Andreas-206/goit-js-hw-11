@@ -15,13 +15,128 @@ const getBaseUrl = () => {
   return url;
 }
 
-const url = getBaseUrl();
-url.searchParams.append("q", "wolf");
+const fetchImg = (query) => {
+  const url = getBaseUrl();
+  url.searchParams.append("q", query);
 
-fetch(url)
-  .then(res => res.json())
-  .then(images => {
-    document.body.insertAdjacentHTML("beforeend", `
-    <img src="${images.hits[0].largeImageURL}"/>
-    `)
-  })
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => data.hits)
+    .catch((error) => {
+      console.error(`Error fetching images:`, error);
+      throw error;
+    });
+};
+
+const renderGallery = (images) => {
+  const galleryCoontainer = document.getElementById("gallery");
+  galleryCoontainer.innerHTML = "";
+
+  const lightbox = new SimpleLightbox(".gallery-item");
+
+  images.forEach(({ image }) => {
+    galleryCoontainer.insertAdjacentHTML("beforeend", `
+    <a href="${largeImageURL}" class="gallery-item">
+      <img src="${webformatURL}" alt="${tags}">
+    </a>
+    `);
+  });
+
+  lightbox.refresh();
+};
+
+let loader = document.getElementById("loader");
+
+const showLoadingIndicator = () => {
+  loader.style.display = "block";
+};
+
+const hideLoadingIndicator = () => {
+  loader.style.display = "none";
+};
+
+const showMessage = (message, type = "info") => {
+  iziToast[type]({
+    title: message,
+    position: "topCenter",
+  });
+};
+
+const handleSearhFormSubmit = (event) => {
+  event.preventDefault();
+
+  const searhInput = document.getElementById("search-input");
+  const query = searhInput.value.trim();
+
+  if (query === "") {
+    showMessage("Please enter a search query", "warning");
+    return;
+  }
+
+  showLoadingIndicator();
+
+  fetchImg(guery)
+    .then((images) => {
+      hideLoadingIndicator();
+      if (images.length > 0) {
+        renderGallery(images);
+      } else {
+        showMessage("Sorry, there are no images matching your search query. Please try again.", "error");
+      }
+    })
+    .catch((error) => {
+      hideLoadingIndicator();
+      showMessage("Error fetching images. Pease try again later.", "error");
+    });
+};
+
+const searchForm = document.getElementById("search-form");
+searchForm.addEventListener("submit", handleSearhFormSubmit);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const url = getBaseUrl();
+// url.searchParams.append("q", "query");
+
+// fetch(url)
+//   .then(res => res.json())
+//   .then(images => {
+//     document.body.insertAdjacentHTML("beforeend", `
+//     <img src="${images.hits[0].largeImageURL}"/>
+//     `)
+//   })
