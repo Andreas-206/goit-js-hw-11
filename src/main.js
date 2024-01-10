@@ -67,7 +67,7 @@ const showMessage = (message, type = "info") => {
   });
 };
 
-const handleSearhFormSubmit = (event) => {
+const handleSearchFormSubmit = (event) => {
   event.preventDefault();
 
   const searhInput = document.getElementById("search-input");
@@ -96,7 +96,7 @@ const handleSearhFormSubmit = (event) => {
 };
 
 const searchForm = document.getElementById("search-form");
-searchForm.addEventListener("submit", handleSearhFormSubmit);
+searchForm.addEventListener("submit", handleSearchFormSubmit);
 
 
 
