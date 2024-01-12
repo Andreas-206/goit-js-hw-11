@@ -8,6 +8,8 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '41701983-23ca5d5908e2c78927e8095f2';
 
+const lightbox = new SimpleLightbox('.gallery-item');
+
 const getBaseUrl = () => {
   const url = new URL(BASE_URL);
   url.searchParams.append("key", API_KEY);
@@ -40,8 +42,6 @@ const renderGallery = (images) => {
   const galleryContainer = document.getElementById("gallery");
   galleryContainer.innerHTML = "";
 
-  const lightbox = new SimpleLightbox(".gallery-item");
-
   images.forEach((image) => {
     const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = image;
     galleryContainer.insertAdjacentHTML('beforeend', `
@@ -62,13 +62,18 @@ const renderGallery = (images) => {
 };
 
 let loader = document.getElementById("loader");
+let searchButton = document.getElementById("search-button");
 
 const showLoadingIndicator = () => {
   loader.style.display = "block";
+
+  searchButton.disabled = true;
 };
 
 const hideLoadingIndicator = () => {
   loader.style.display = "none";
+
+  searchButton.disabled = false;
 };
 
 const showMessage = (message, type = "info") => {
