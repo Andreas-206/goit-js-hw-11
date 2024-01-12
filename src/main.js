@@ -46,7 +46,7 @@ const renderGallery = (images) => {
     const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = image;
     galleryContainer.insertAdjacentHTML('beforeend', `
     <li class="gallery-item">
-    <a href="${largeImageURL}"
+    <a href="${largeImageURL}">
       <img src="${webformatURL}" alt="${tags}"/>
     <a/>
     <p>Likes: ${likes}<p/>
