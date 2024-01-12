@@ -8,7 +8,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '41701983-23ca5d5908e2c78927e8095f2';
 
-const lightbox = new SimpleLightbox('.gallery-item');
+const lightbox = new SimpleLightbox(".gallery-item");
 
 const getBaseUrl = () => {
   const url = new URL(BASE_URL);
