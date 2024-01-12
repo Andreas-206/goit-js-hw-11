@@ -10,7 +10,10 @@ const API_KEY = '41701983-23ca5d5908e2c78927e8095f2';
 
 const getBaseUrl = () => {
   const url = new URL(BASE_URL);
-  url.searchParams.append("key", API_KEY)
+  url.searchParams.append("key", API_KEY);
+  url.searchParams.append("image_type", "photo");
+  url.searchParams.append("orientation", "horizontal");
+  url.searchParams.append("safesearch", true);
 
   return url;
 }
@@ -39,14 +42,15 @@ const renderGallery = (images) => {
 
   const lightbox = new SimpleLightbox(".gallery-item");
 
-  images.forEach(({ image }) => {
+  images.forEach((image) => {
+    const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = image;
     galleryContainer.insertAdjacentHTML('beforeend', `
     <li class="gallery-item">
     <a href="${largeImageURL}"
       <img src="${webformatURL}" alt="${tags}"/>
     <a/>
     <p>Likes: ${likes}<p/>
-    <p>view: ${view}<p/>
+    <p>view: ${views}<p/>
     <p>comments: ${comments}<p/>
     <p>downloads: ${downloads}<p/>
     </li>
@@ -80,7 +84,7 @@ const handleSearсhFormSubmit = (event) => {
   const searchInput = document.getElementById("search-input");
   const query = searchInput.value.trim();
 
-  if (query === "") {
+  if (query.length < 3) {
     showMessage("Please enter a search query", "warning");
     return;
   }
